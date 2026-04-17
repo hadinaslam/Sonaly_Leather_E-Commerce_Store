@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonaly Leather | Premium Leather Jackets</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #2d2d2d;
+            --accent: #d4af37;
+            --text-light: #f8f8f8;
+            --text-muted: #a0a0a0;
+            --bg-dark: #0f0f0f;
+            --gradient: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            --shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-light);
+            background: var(--bg-dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15,15,15,0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        .cart-icon {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gradient);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cart-icon:hover { border: 2px solid var(--accent); }
+
+        .cart-count {
+            background: var(--accent);
+            color: var(--primary);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-light), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background: var(--gradient);
+            color: var(--text-light);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Features */
+        .features {
+            padding: 100px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2.5rem;
+            background: rgba(26,26,26,0.6);
+            border-radius: 20px;
+            transition: all 0.3s;
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            background: rgba(45,45,45,0.8);
+        }
+
+        .feature-item i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Products */
+        .products {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, var(--text-light), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: rgba(26,26,26,0.8);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+            border: 1px solid rgba(212,175,55,0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: var(--gradient);
+            color: var(--text-light);
+            border: none;
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 1px solid var(--secondary);
+        }
+
+        /* Toast */
+        #toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            transform: translateX(400px);
+            transition: transform 0.4s;
+            z-index: 2000;
+            box-shadow: var(--shadow);
+        }
+
+        #toast.show {
+            transform: translateX(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Sonaly Leather</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#collection">Collection</a>
+            <a href="#about">Our Story</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="cart-icon" onclick="goToCart()">
+            <i class="fas fa-shopping-bag"></i>
+            Cart <span class="cart-count" id="cart-count">0</span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Wear the Legend</h1>
+        <p>Handcrafted premium leather jackets. Timeless design meets unmatched durability.</p>
+        <a href="#collection" class="btn">Shop Collection</a>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="about">
+        <div class="feature-item">
+            <i class="fas fa-leaf"></i>
+            <h3>Genuine Leather</h3>
+            <p>Sourced from the finest tanneries worldwide.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-hands"></i>
+            <h3>Hand-Stitched</h3>
+            <p>Every seam crafted by master artisans.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Lifetime Warranty</h3>
+            <p>Quality guaranteed for generations.</p>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products" id="collection">
+        <h2 class="section-title">The Collection</h2>
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="The Classic Biker" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">The Classic Biker</h3>
+                    <span class="product-price">20,000 PKR</span>
+                    <button class="add-to-cart" onclick="addToCart('The Classic Biker', 20000)">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1520975661595-6453be3f7070?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vintage Bomber" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Vintage Bomber</h3>
+                    <span class="product-price">15,000 PKR</span>
+                    <button class="add-to-cart" onclick="addToCart('Vintage Bomber', 15000)">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cafe Racer" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">The Cafe Racer</h3>
+                    <span class="product-price">12,000 PKR</span>
+                    <button class="add-to-cart" onclick="addToCart('The Cafe Racer', 12000)">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="The Aviator" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">The Aviator</h3>
+                    <span class="product-price">5,000 PKR</span>
+                    <button class="add-to-cart" onclick="addToCart('The Aviator', 5000)">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <p>&copy; 2023 Sonaly Leather Co. All rights reserved.</p>
+        <p>Karachi, Pakistan</p>
+    </footer>
+
+    <!-- Toast -->
+    <div id="toast">Item added to cart! <i class="fas fa-check"></i></div>
+
+    <script>
+        // Cart functionality - ALL WORKING
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const cartCountElement = document.getElementById('cart-count');
+        const toast = document.getElementById("toast");
+
+        // Update cart count
+        function updateCartCount() {
+            cartCountElement.innerText = cart.length;
+        }
+
+        // Add to cart
+        function addToCart(name, price) {
+            const product = {
+                name: name,
+                price: price,
+                quantity: 1
+            };
+            
+            cart.push(product);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
+            showToast();
+        }
+
+        // Show toast notification
+        function showToast() {
+            toast.className = "show";
+            setTimeout(() => {
+                toast.className = "";
+            }, 3000);
+        }
+
+        // Go to cart page
+        function goToCart() {
+            window.location.href = "cart.html";
+        }
+
+        // Initialize cart count on page load
+        updateCartCount();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

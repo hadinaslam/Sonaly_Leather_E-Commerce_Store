@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonaly Leather | Premium Leather Jackets</title>
+<link rel="stylesheet" href="style.css" />  
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Sonaly Leather</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#collection">Collection</a>
+            <a href="#about">Our Story</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="cart-icon" onclick="goToCart()">
+            Cart <span class="cart-count" id="cart-count">0</span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Wear the Legend</h1>
+        <p>Handcrafted, premium leather jackets designed for the modern rebel. Built to last a lifetime.</p>
+        <a href="#collection" class="btn">Shop Collection</a>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="feature-item">
+            <h3>Genuine Leather</h3>
+            <p>Sourced from the finest tanneries.</p>
+        </div>
+        <div class="feature-item">
+            <h3>Hand-Stitched</h3>
+            <p>Every seam is reinforced by master craftsmen.</p>
+        </div>
+        <div class="feature-item">
+            <h3>Lifetime Warranty</h3>
+            <p>We stand by the quality of our materials.</p>
+        </div>
+    </section>
+
+    <!-- Product Collection -->
+    <section class="products" id="collection">
+        <h2 class="section-title">The Collection</h2>
+        <div class="product-grid">
+            
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="/images/PXL_20251130_145527645~2.jpg" alt="The Classic Biker" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">The Classic Biker</h3>
+                    <span class="product-price">20,000 PKR</span>
+                   <button class="add-to-cart" onclick="addToCart('The Classic Biker', 20000)">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1520975661595-6453be3f7070?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Vintage Bomber" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Vintage Bomber</h3>
+                    <span class="product-price">15,000 PKR</span>
+                    <button class="add-to-cart" onclick="addToCart('Vintage Bomber', 15000)">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cafe Racer" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">The Cafe Racer</h3>
+                    <span class="product-price">12,000 PKR</span>
+                    <button class="add-to-cart" onclick="addToCart('The Cafe Racer', 12000)">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="The Aviator" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">The Aviator</h3>
+                    <span class="product-price">5,000 PKR</span>
+                   <button class="add-to-cart" onclick="addToCart('The Aviator', 5000)">Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <p>&copy; 2023  & Sonaly Leather Co. All rights reserved.</p>
+        <p> Karachi , Pakistan </p>
+    </footer>
+
+    <!-- Toast Notification Element -->
+    <div id="toast">Added to Cart!</div>
+
+    <script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const cartCountElement = document.getElementById('cart-count');
+const toast = document.getElementById("toast");
+
+updateCartCount();
+
+function addToCart(name, price){
+
+    const product = {
+        name: name,
+        price: price
+    };
+
+    cart.push(product);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    updateCartCount();
+
+    showToast();
+}
+
+function updateCartCount(){
+    cartCountElement.innerText = cart.length;
+}
+
+function showToast(){
+    toast.className = "show";
+
+    setTimeout(function(){
+        toast.className = toast.className.replace("show", "");
+    },3000);
+}
+
+    function goToCart(){
+window.location.href="cart.html";
+}
+
+
+</script>
+</body>
+</html>
